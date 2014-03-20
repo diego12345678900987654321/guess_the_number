@@ -1,12 +1,26 @@
-puts "Welcome to Guess the Number!"
-secret_number = rand(11)
+puts "WELLLLLLLLLCOOOOOOOOMMEEEEE to the G-U-E-S-S number"
 
-puts "Guess the number between 0 and 10:"
-guess = gets.chomp.to_i
+number = rand(1..100)
+num_guesses = 0
 
-until guess == secret_number
- puts "Wrong!"
- guess = gets.chomp.to_i 
+puts "I'm thinking of a random number from 1 to 100"
+puts "Can you guess it?"
+
+loop do
+  print "What is your guess? "
+  guess = gets.chomp.to_i
+  num_guesses += 1
+
+  unless guess == number
+    message = if guess > number
+                "Too high"
+              else
+                "Too low"
+              end
+    puts message
+  else
+    puts "You got it!"
+    puts "It took you #{num_guesses} guesses."
+    exit
+  end
 end
-
-puts "congrats!!"
